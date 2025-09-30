@@ -1,0 +1,54 @@
+# Logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node/Next.js
+node_modules/
+.next/
+out/
+dist/
+build/
+.vercel/
+.turbo/
+coverage/
+.eslintcache
+.prettiercache
+
+# Env files (never commit secrets)
+.env
+.env.*
+.env.local
+!.env.example
+!.env.test.example
+.envrc
+
+# Supabase local envs (if used)
+supabase/.env
+supabase/functions/**/.env
+
+# Keys and certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+*.p12
+id_rsa
+id_rsa.pub
+*.keystore
+*.jks
+
+# IDE/editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Misc caches
+.cache/
+*.swp
+*.swo
