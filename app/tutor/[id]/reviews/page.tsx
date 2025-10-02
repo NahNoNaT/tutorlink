@@ -2,8 +2,8 @@
 import Link from 'next/link'
 import { supabaseServer } from '@/lib/supabase/server'
 
-export default async function TutorReviews({ params }: { params: { id: string } }) {
-  const tutorId = params.id
+export default async function TutorReviews({ params }: { params: Promise<{ id: string }> }) {
+  const { id: tutorId } = await params
   const sb = await supabaseServer()
 
   const { data: prof } = await sb

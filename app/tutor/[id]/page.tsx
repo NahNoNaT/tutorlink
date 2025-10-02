@@ -31,8 +31,8 @@ function dayTimeRange(startISO: string, endISO: string) {
   return `${day} ${st} – ${et}`
 }
 
-export default async function TutorPublicProfile({ params }: { params: { id: string } }) {
-  const tutorId = params.id
+export default async function TutorPublicProfile({ params }: { params: Promise<{ id: string }> }) {
+  const { id: tutorId } = await params
   const sb = await supabaseServer()
 
   const { data: prof } = await sb

@@ -39,15 +39,15 @@ const ALLOWED_EXT = new Set([
 const RULES = [
   { name: 'PrivateKeyBlock',  re: /-----BEGIN (?:RSA |EC |DSA |OPENSSH |PGP )?PRIVATE KEY-----/ },
   { name: 'AWSAccessKeyId',   re: /AKIA[0-9A-Z]{16}/ },
-  { name: 'AWSSecretKey',     re: /(?i)aws(.{0,20})?(secret|access)[^A-Za-z0-9\n]{0,3}([A-Za-z0-9\/+=]{40})/ },
+  { name: 'AWSSecretKey',     re: /aws(.{0,20})?(secret|access)[^A-Za-z0-9\n]{0,3}([A-Za-z0-9\/+=]{40})/i },
   { name: 'GitHubToken',      re: /(ghp|github_pat)_[A-Za-z0-9_]{30,}/ },
   { name: 'GoogleAPIKey',     re: /AIza[0-9A-Za-z\-_]{35}/ },
   { name: 'StripeSecret',     re: /(sk_live_|rk_live_|whsec_)[A-Za-z0-9]{10,}/ },
   { name: 'StripePublishable',re: /pk_live_[A-Za-z0-9]{10,}/ },
   { name: 'SlackToken',       re: /xox[abpr]-[A-Za-z0-9\-]{10,}/ },
   { name: 'SupabaseJWTLike',  re: /eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\.[A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]+/ },
-  { name: 'GenericPwd',       re: /(?i)(password|passwd|pwd)\s*[:=]\s*['\"][^'\"]+['\"]/ },
-  { name: 'GenericSecret',    re: /(?i)(secret|api[_-]?key|token)\s*[:=]\s*['\"][^'\"]+['\"]/ },
+  { name: 'GenericPwd',       re: /(password|passwd|pwd)\s*[:=]\s*['"][^'"]+['"]/i },
+  { name: 'GenericSecret',    re: /(secret|api[_-]?key|token)\s*[:=]\s*['"][^'"]+['"]/i },
 ]
 
 function shouldScan(file) {
