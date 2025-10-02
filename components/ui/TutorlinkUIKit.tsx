@@ -1,6 +1,7 @@
 'use client';
 import React, { useMemo, useState } from "react";
 import Link from 'next/link'
+import Image from 'next/image'
 
 /**
  * Tutorlink Tailwind/React UI Kit
@@ -203,7 +204,7 @@ const sampleTutors: Tutor[] = new Array(8).fill(0).map((_, i) => ({
 
 const TutorCard: React.FC<{ t: Tutor }> = ({ t }) => (
   <Card className="flex gap-4 p-4">
-    <img src={t.avatar} alt={t.name} className="h-16 w-16 rounded-2xl object-cover" />
+    <Image src={t.avatar || ''} alt={t.name} width={64} height={64} className="h-16 w-16 rounded-2xl object-cover" />
     <div className="min-w-0 flex-1">
       <div className="flex items-center justify-between gap-3">
         <h3 className="truncate text-lg font-semibold text-white">{t.name}</h3>
@@ -232,7 +233,7 @@ const TestimonialRail: React.FC = () => {
           {new Array(8).fill(0).map((_, i) => (
             <Card key={i} className="min-w-[320px] max-w-sm">
               <div className="mb-3 flex items-center gap-3">
-                <img src={`https://i.pravatar.cc/80?img=${(i + 20) % 70}`} alt="avatar" className="h-10 w-10 rounded-xl object-cover" />
+                <Image src={`https://i.pravatar.cc/80?img=${(i + 20) % 70}`} alt="avatar" width={40} height={40} className="h-10 w-10 rounded-xl object-cover" />
                 <div>
                   <p className="text-sm font-semibold text-white">Person {i + 1}</p>
                   <p className="text-xs text-slate-400">Learner</p>

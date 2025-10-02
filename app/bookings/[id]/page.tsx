@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { supabase } from '../../../lib/supabase/browser'
 import LoadingScreen from '@/components/ui/LoadingScreen'
+import Image from 'next/image'
 
 type BookingRow = {
   id: number
@@ -223,7 +224,7 @@ function BankTransferBlock({ bookingId, amount, onSubmitted }:{ bookingId:number
       {!configured && <div style={{ color: '#fca5a5', fontSize: 12 }}>not_configured: set NEXT_PUBLIC_VIETQR_BANK, NEXT_PUBLIC_VIETQR_ACCOUNT, NEXT_PUBLIC_VIETQR_ACCOUNT_NAME</div>}
       {configured && (
         <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-          <img src={url} alt="VietQR" style={{ width: 220, height: 220, background: '#fff', borderRadius: 12 }} />
+          <Image src={url} alt="VietQR" width={220} height={220} style={{ background: '#fff', borderRadius: 12 }} />
           <div style={{ color: '#cbd5e1', fontSize: 14 }}>
             <div>Bank: {bank}</div>
             <div>Account number: {acct}</div>
