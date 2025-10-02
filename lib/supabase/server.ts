@@ -7,10 +7,12 @@ export async function supabaseServer() {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
+      // In Server Components we can read cookies but typically shouldn't mutate them.
+      // Provide getAll for robust reading; no-op setters to satisfy API.
       cookies: {
-        get: (name: string) => cookieStore.get(name)?.value,
-        set() {}, remove() {}
-      }
+        getAll: () => cookieStore.getAll().map((c) => ({ name: c.name, value: c.value })),
+        setAll: () => {},
+      },
     }
   )
 }

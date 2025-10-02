@@ -1,6 +1,6 @@
 ﻿'use client'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase/browser'
 import Link from 'next/link'
 
@@ -10,6 +10,7 @@ export default function SignInPage() {
   const [msg, setMsg] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -54,7 +55,9 @@ export default function SignInPage() {
         return
       }
 
-      router.push('/')
+      const next = searchParams?.get('next') || '/'
+      router.replace(next)
+      router.refresh()
     } finally {
       setLoading(false)
     }
